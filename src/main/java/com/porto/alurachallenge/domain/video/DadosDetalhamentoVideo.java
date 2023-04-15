@@ -5,11 +5,12 @@ public record DadosDetalhamentoVideo(
     String titulo,
     String descricao,
     String url,
-    boolean ativo
+    boolean ativo,
+    Long categoriaId
 ) {
 
     public DadosDetalhamentoVideo(Video video) {
-        this(video.getId(), video.getTitulo(), video.getDescricao(), video.getUrl(), video.isAtivo());
+        this(video.getId(), video.getTitulo(), video.getDescricao(), video.getUrl(), video.isAtivo(), video.getCategoria().getId());
     }
 
 }

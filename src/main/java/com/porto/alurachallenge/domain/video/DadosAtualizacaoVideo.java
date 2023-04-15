@@ -7,7 +7,8 @@ public record DadosAtualizacaoVideo(
     Long id,
     String titulo,
     String descricao,
-    String url
+    String url,
+    Long categoriaId
 ) {
 
 }

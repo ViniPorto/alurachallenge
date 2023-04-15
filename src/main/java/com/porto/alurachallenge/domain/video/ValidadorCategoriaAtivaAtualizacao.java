@@ -1,0 +1,22 @@
+package com.porto.alurachallenge.domain.video;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.porto.alurachallenge.domain.categoria.CategoriaRepository;
+import com.porto.alurachallenge.infra.exception.APIException;
+
+@Component
+public class ValidadorCategoriaAtivaAtualizacao implements ValidadorAtualizacaoDeVideo {
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
+    @Override
+    public void validar(DadosAtualizacaoVideo dados) {
+        if(dados.categoriaId() == null) return; //não é obrigatório informar id da categoria na criação do vídeo
+        var categoriaEstaAtiva = categoriaRepository.findAtivoById(dados.categoriaId());
+        if(!categoriaEstaAtiva) throw new APIException("Categoria inativa!");
+    }
+    
+}

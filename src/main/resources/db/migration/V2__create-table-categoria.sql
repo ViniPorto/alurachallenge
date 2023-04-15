@@ -8,3 +8,5 @@ create table categoria (
     primary key (id)
     
 );
+
+insert into categoria (titulo, cor, ativo) values ('LIVRE', 'VERDE', 1);

@@ -1,6 +1,7 @@
 package com.porto.alurachallenge.domain.categoria;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,13 +31,14 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Cor cor;
     private boolean ativo;
 
-    public void atualizarInformacoes(@Valid DadosAtualizacaoCategoria dados) {
+    public Categoria atualizarInformacoes(@Valid DadosAtualizacaoCategoria dados) {
         if(dados.titulo() != null) this.titulo = dados.titulo();
         if(dados.cor() != null) this.cor = dados.cor();
+        return this;
     }
 
     public void excluir() {

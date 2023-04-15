@@ -10,7 +10,8 @@ public record DadosCadastroVideo(
     String descricao,
     @NotBlank
     @Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")
-    String url
+    String url,
+    Long categoriaId
 ) {
 
 }
